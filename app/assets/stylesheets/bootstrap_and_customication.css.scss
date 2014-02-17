@@ -1,6 +1,18 @@
-$body-bg: #fff;
-$navbar-inverse-bg: #e67e22;
-$navbar-inverse-link-color: #fff;
-$brand-primary: #8e44ad;
-$border-radius-base: 0px;
+$body-bg: 										#fff;
+$font-family-serif: 					'Lobster', cursive;
+$navbar-inverse-bg: 					#ecf0f1;
+$navbar-inverse-link-color: 	#2c3e50;
+$brand-primary: 							#d35400;
+$border-radius-base: 					0px;
+$navbar-inverse-brand-color: 	#d35400;
+
+
 @import 'bootstrap';
+
+.center {
+	text-align: center;
+}
+
+.navbar-brand  {
+	font-weight: bold;
+}

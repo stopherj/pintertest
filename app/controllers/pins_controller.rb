@@ -25,10 +25,14 @@ class PinsController < ApplicationController
   # POST /pins.json
   def create
     @pin = Pin.new(pin_params)
+
+    respond_to do |format|
       if @pin.save
-        redirect_to @pin, notice: 'Pin was successfully created.'
+        format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @pin }
       else
-        render action: 'new'
+        format.html { render action: 'new' }
+        format.json { render json: @pin.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -36,20 +40,25 @@ class PinsController < ApplicationController
   # PATCH/PUT /pins/1
   # PATCH/PUT /pins/1.json
   def update
-
-    if @pin.update(pin_params)
-      redirect_to @pin, notice: 'Pin was successfully updated.'
-    else
-      render action: 'edit'
+    respond_to do |format|
+      if @pin.update(pin_params)
+        format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @pin.errors, status: :unprocessable_entity }
+      end
     end
-
   end
 
   # DELETE /pins/1
   # DELETE /pins/1.json
   def destroy
     @pin.destroy
-    redirect_to pins_url
+    respond_to do |format|
+      format.html { redirect_to pins_url }
+      format.json { head :no_content }
+    end
   end
 
   private

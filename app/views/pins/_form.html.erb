@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <%= form_for(@pin) do |f| %>
+  <%= form_for @pin, html: { multipart: true } do |f| %>
     <% if @pin.errors.any? %>
     <div class="panel-heading">
       <div id="error_explanation">
@@ -15,7 +15,11 @@
     <% end %>
 
     
-      <div class="panel-body"> 
+      <div class="panel-body">
+        <div class="field form-group">
+          <%= f.label :image %><br>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
         <div class="field form-group">
           <%= f.label :description %><br>
           <%= f.text_field :description, class: "form-control" %>

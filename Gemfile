@@ -4,6 +4,8 @@ ruby  '2.0.0'
 gem 'rails', '4.0.2'
 
 gem 'aws-sdk', '~>1.40.3'
+gem 'masonry-rails', '~> 0.2.1'
+gem 'jquery-turbolinks'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
